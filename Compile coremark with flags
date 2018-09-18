@@ -1,0 +1,53 @@
+make compile PORT_DIR=IMX ITERATION=15000
+mv coremark iter
+./iter
+
+make compile PORT_DIR=IMX XCFLAGS="-DMULTITHREAD=4 -DUSE_PTHREAD -DITERATION=15000"
+mv coremark muti_th
+./muti_th
+
+make compile PORT_DIR=IMX XCFLAGS="-DITERATION=15000 -DPERFORMANCE_RUN=1" 
+mv coremark perf_run
+./perf_run 0x3415 0x3415 0x66 15000 7 1 2000
+
+make compile PORT_DIR=IMX XCFLAGS="-DITERATION=15000 -DVALIDATION_RUN=1"
+mv coremark vali_run
+./vali_run 0x3415 0x3415 0x66 15000 7 1 2000
+
+
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_FORK=1 -DITERATION=15000"
+mv coremark multi_fork
+./multi_fork
+
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_FORK=1 -DITERATION=15000 -DPERFORMANCE_RUN=1"
+mv coremark multi_fork_perf
+./multi_fork_perf 0x3415 0x3415 0x66 15000 7 1 2000
+
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_FORK=1 -DITERATION=15000 -DVALIDATION_RUN=1"
+mv coremark multi_fork_vali
+./multi_fork_vali 0x3415 0x3415 0x66 15000 7 1 2000
+
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_PTHREAD -DITERATION=15000 -DPERFORMANCE_RUN=1"
+mv coremark multi_th_perf
+./multi_th_perf 0x3415 0x3415 0x66 15000 7 1 2000
+
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_PTHREAD -DITERATION=15000 -DVALIDATION_RUN=1"
+mv coremark multi_th_vali
+./multi_th_vali 0x3415 0x3415 0x66 15000 7 1 2000
+===============
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_FORK=1 -DITERATION=15000 -DPERFORMANCE_RUN=1 -DCORE_DEBUG=1"
+mv coremark multi_fork_perf_debug
+./multi_fork_perf 0x3415 0x3415 0x66 15000 7 1 2000
+
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_FORK=1 -DITERATION=15000 -DVALIDATION_RUN=1 -DCORE_DEBUG=1"
+mv coremark multi_fork_vali_debug
+./multi_fork_vali 0x3415 0x3415 0x66 15000 7 1 2000
+
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_PTHREAD -DITERATION=15000 -DPERFORMANCE_RUN=1 -DCORE_DEBUG=1"
+mv coremark multi_th_perf_debug
+./multi_th_perf 0x3415 0x3415 0x66 15000 7 1 2000
+
+make compile PORT_DIR=IMX XCFLAGS="-g -DMULTITHREAD=4 -DUSE_PTHREAD -DITERATION=15000 -DVALIDATION_RUN=1 -DCORE_DEBUG=1"
+mv coremark multi_th_vali_debug
+./multi_th_vali 0x3415 0x3415 0x66 15000 7 1 2000
+
